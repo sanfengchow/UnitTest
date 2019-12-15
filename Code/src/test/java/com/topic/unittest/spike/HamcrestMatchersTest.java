@@ -1,5 +1,6 @@
 package com.topic.unittest.spike;
 
+import org.hamcrest.core.Every;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -13,18 +14,41 @@ import static org.hamcrest.Matchers.*;
 public class HamcrestMatchersTest {
 
     @Test
-    public void learning() {
-        List<Integer> numbers = Arrays.asList(12, 15, 45);
+    public void hamcrestCoreShowCase() {
 
-        assertThat(numbers, hasSize(3));
-        assertThat(numbers, hasItems(12, 45));
-        assertThat(numbers, everyItem(greaterThan(10)));
-        assertThat(numbers, everyItem(lessThan(100)));
+        assertThat(true, is(true));
+        assertThat(false, is(false));
 
-        assertThat("", isEmptyString());
-        assertThat("ABCDE", containsString("BCD"));
-        assertThat("ABCDE", startsWith("ABC"));
-        assertThat("ABCDE", endsWith("CDE"));
+        assertThat("2", is(equalTo("2")));
+        assertThat(2, is(equalTo(2)));
+        assertThat("aBcD", is(equalToIgnoringCase("abcd")));
+        assertThat("", is(emptyString()));
+
+        assertThat(2, is(notNullValue()));
+        assertThat(2, greaterThan(1));
+        assertThat(2.01, closeTo(2, 0.01));
+
+        assertThat("xyz", is(anything()));
+
+    }
+
+    @Test
+    public void basicHamcrestMatchers() {
+        List<Integer> scores = Arrays.asList(99, 100, 101, 105);
+        assertThat(scores, hasSize(4));
+        assertThat(scores, hasItems(100, 101));
+        assertThat(scores, everyItem(greaterThan(90)));
+        assertThat(scores, everyItem(lessThan(200)));
+
+        // String
+        assertThat("", is(emptyString()));
+        assertThat(null, is(nullValue()));
+
+        // Array
+        Integer[] marks = {1, 2, 3};
+
+        assertThat(marks, arrayWithSize(3));
+        assertThat(marks, arrayContainingInAnyOrder(2, 3, 1));
 
     }
 
