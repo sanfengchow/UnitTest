@@ -2,6 +2,7 @@ package com.topic.unittest.simplejunit;
 
 
 import lombok.Data;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -38,6 +39,12 @@ public class JUnitDemoTest {
         personTwo = new Person();
         personTwo.setName("张三");
     }
+    @After
+    public void teardown() {
+        personOne = null;
+        personTwo = null;
+    }
+
 
     @Test
     public void assertEqualsString() {

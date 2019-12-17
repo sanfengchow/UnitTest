@@ -1,4 +1,4 @@
-package com.in28minutes.junit.suite;
+package com.topic.unittest.simplejunit.suite;
 
 import com.topic.unittest.simplejunit.JUnitDemoTest;
 import com.topic.unittest.simplejunit.StringHelperTest;

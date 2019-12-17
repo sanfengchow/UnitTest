@@ -4,6 +4,7 @@ import org.junit.*;
 
 public class JUnitLifecycleTest {
 
+    //beforeClass 为静态方法
     @BeforeClass
     public static void beforeClass() {
         System.out.println("Before Class");
