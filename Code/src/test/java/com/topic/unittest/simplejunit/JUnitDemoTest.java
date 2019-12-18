@@ -1,7 +1,12 @@
 package com.topic.unittest.simplejunit;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
 
-import lombok.Data;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -10,13 +15,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.junit.runners.MethodSorters;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotSame;
-
+import lombok.Data;
 
 /**
  * 人员档案服务测试类
@@ -39,12 +38,12 @@ public class JUnitDemoTest {
         personTwo = new Person();
         personTwo.setName("张三");
     }
+
     @After
     public void teardown() {
         personOne = null;
         personTwo = null;
     }
-
 
     @Test
     public void assertEqualsString() {
@@ -77,7 +76,7 @@ public class JUnitDemoTest {
     @Test(timeout = 100)
     public void testPerformance() {
         for (int i = 0; i < 1000000; i++) {
-            Arrays.sort(new int[]{i, i - 1, i + 1});
+            Arrays.sort(new int[] {i, i - 1, i + 1});
         }
     }
 }

@@ -132,17 +132,20 @@ public class MockitoTest {
     @Test(expected = IndexOutOfBoundsException.class)
     public void spy_on_real_objects() {
         List list = new LinkedList();
+        list.add(23);
         List spy = Mockito.spy(list);
         // 下面预设的spy.get(0)会报错，因为会调用真实对象的get(0)，所以会抛出越界异常
         // Mockito.when(spy.get(0)).thenReturn(3);
 
         // 使用doReturn-when可以避免when-thenReturn调用真实对象api
-        Mockito.doReturn(999).when(spy).get(999);
+        // Mockito.doReturn(999).when(spy).get(999);
+        when(spy.get(999)).thenReturn(999);
         // 预设size()期望值
         Mockito.when(spy.size()).thenReturn(100);
         // 调用真实对象的api
         spy.add(1);
         spy.add(2);
+
         Assert.assertEquals(100, spy.size());
         Assert.assertEquals(1, spy.get(0));
         Assert.assertEquals(2, spy.get(1));

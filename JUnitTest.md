@@ -124,6 +124,38 @@ Springboot默认扫描规则是：自动扫描启动器类的同包或者其子�
 
 
 
+
+
+| 方法名                                                       | 描述                                      |
+| ------------------------------------------------------------ | ----------------------------------------- |
+| Mockito.mock(classToMock)                                    | 模拟对象                                  |
+| Mockito.verify(mock)                                         | 验证行为是否发生                          |
+| Mockito.when(methodCall).thenReturn(value1).thenReturn(value2) | 触发时第一次返回value1，第n次都返回value2 |
+| Mockito.doThrow(toBeThrown).when(mock).[method]              | 模拟抛出异常。                            |
+| Mockito.mock(classToMock,defaultAnswer)                      | 使用默认Answer模拟对象                    |
+| Mockito.when(methodCall).thenReturn(value)                   | 参数匹配                                  |
+| Mockito.doReturn(toBeReturned).when(mock).[method]           | 参数匹配（直接执行不判断）                |
+| Mockito.when(methodCall).thenAnswer(answer))                 | 预期回调接口生成期望值                    |
+| Mockito.doAnswer(answer).when(methodCall).[method]           | 预期回调接口生成期望值（直接执行不判断）  |
+| Mockito.spy(Object)                                          | 用spy监控真实对象,设置真实对象行为        |
+| Mockito.doNothing().when(mock).[method]                      | 不做任何返回                              |
+| Mockito.doCallRealMethod().when(mock).[method] //等价于Mockito.when(mock.[method]).thenCallRealMethod(); | 调用真实的方法                            |
+| reset(mock)                                                  | 重置mock                                  |
+
+
+
+​                                  
+
+**case 细到什么程度为好？**
+
+这个问题也是比较经典的，一个方法要是所有的路径都覆盖到，那么要写很多的 case，说真的累死人。我的建议是两个原则：
+
+1. 核心逻辑，容易出错的逻辑一定要覆盖到；
+
+2. 根据自己的时间。 没必要写的非常多，毕竟 case 维护成本很高，业务逻辑一改， case 得跟着改。
+
 ### 单元测试原理
 
 <https://blog.csdn.net/u012501054/article/details/79799241>
+
+<https://www.jianshu.com/p/ecbd7b5a2021>
