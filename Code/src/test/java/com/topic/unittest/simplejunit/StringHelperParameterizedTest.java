@@ -1,15 +1,16 @@
 package com.topic.unittest.simplejunit;
 
-import com.topic.unittest.helper.StringHelper;
+import static org.junit.Assert.assertEquals;
+
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import java.util.Arrays;
-import java.util.Collection;
-
-import static org.junit.Assert.assertEquals;
+import com.topic.unittest.helper.StringHelper;
 
 @RunWith(Parameterized.class)
 public class StringHelperParameterizedTest {
@@ -28,15 +29,13 @@ public class StringHelperParameterizedTest {
 
     @Parameters
     public static Collection<String[]> testConditions() {
-        String expectedOutputs[][] = {
-                {"AACD", "CD"},
-                {"ACD", "CD"}, {"AAACD", "ACD"}};
+        String expectedOutputs[][] = {{"AACD", "CD"}, {"ACD", "CD"}, {"AAACD", "ACD"}};
         return Arrays.asList(expectedOutputs);
     }
 
     @Test
     public void testTruncateAInFirst2Positions() {
-        assertEquals(expectedOutput,
-                helper.truncateAInFirst2Positions(input));
+        assertEquals(expectedOutput, helper.truncateAInFirst2Positions(input));
     }
+
 }
